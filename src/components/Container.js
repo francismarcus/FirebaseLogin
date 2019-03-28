@@ -4,15 +4,18 @@ import Login from './Login';
 
 class Container extends React.Component {
     state = {
-        SignedUp: false
+        SignedUp: false,
+        email: '',
+        password: ''
       }
 
       // TODO: goLogin
 
-      handleSignUp = event => {
-          event.preventDefault();
+      handleSignUp = (email, password) => {
           this.setState({
-              SignedUp: !this.state.SignedUp
+
+            email,
+            password
           })
       }
 
@@ -21,6 +24,7 @@ class Container extends React.Component {
             <div>
                 <SignUp onSignup={this.handleSignUp} />
                 <Login onLogin={this.handleLogin} />
+                <pre>{JSON.stringify(this.state)}</pre>
             </div>
         )
     }

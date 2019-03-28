@@ -20,10 +20,9 @@ class SignUp extends React.Component {
 
     onSubmit = event => {
         event.preventDefault();
-        this.setState({
-            email: '',
-            password: ''
-        });
+
+        let { email, password } = this.state;
+        this.props.onSignup(email, password);
     }
 
     testClick = event => {
@@ -57,7 +56,7 @@ class SignUp extends React.Component {
 
                 <button type='submit'>Sign Up</button>
                 </form>
-                <a role='button' onClick={this.testClick}> 
+                <a role='button' onClick={this.testClick}>
                 Already have an account? login
                 </a>
             </div>

@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import Container from './Container';
 import './App.css';
-import { firebaseApp } from './firebase';
+import { auth } from './firebase';
 
-const auth = firebaseApp.auth();
 auth.createUserWithEmailAndPassword('marcusm@live.se', 'password')
     .then(response => console.log('Response', response))
     .catch(err => console.error(err));

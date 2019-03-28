@@ -10,3 +10,4 @@ import firebase from 'firebase';
     messagingSenderId: "1053018919255"
   };
 export const firebaseApp =  firebase.initializeApp(config);
+export const auth = firebaseApp.auth();
