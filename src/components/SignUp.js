@@ -23,6 +23,7 @@ class SignUp extends React.Component {
 
         let { email, password } = this.state;
         this.props.onSignup(email, password);
+        this.setState({email: '', password: ''})
     }
 
     testClick = event => {

@@ -20,6 +20,10 @@ class Login extends React.Component {
 
     onSubmit = event => {
         event.preventDefault();
+
+        let { email, password } = this.state;
+        this.props.onLogin(email, password);
+
         this.setState({
             email: '',
             password: ''
@@ -57,7 +61,7 @@ class Login extends React.Component {
 
                 <button type='submit'>Sign Up</button>
                 </form>
-                <a role='button' onClick={this.testClick}> 
+                <a role='button' onClick={this.testClick}>
                 Dont have an account? signup
                 </a>
             </div>
