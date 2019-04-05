@@ -15,7 +15,18 @@ class Container extends React.Component {
         uid: ''
       }
 
-      // TODO: goLogin
+      componentDidMount () {
+        auth.onAuthStateChanged(user => {
+
+          if(user) {
+            this.setState({
+              email: user.email,
+              uid: user.uid,
+              isLoggedIn: true
+            })
+          }
+        })
+      }
 
     handleSignUp = (email, password) => {
       auth.createUserWithEmailAndPassword(email, password).catch(err => console.error(err))
@@ -29,9 +40,8 @@ class Container extends React.Component {
     handleLogin = (email, password) => {
       auth.signInWithEmailAndPassword(email, password)
           .then(() => {
+            
             const user = firebase.auth().currentUser;
-
-            console.log(user)
               this.setState({
                 email,
                 password,
@@ -80,7 +90,7 @@ class Container extends React.Component {
                   </pre>
 
                 <button onClick={this.handleLogout}> Logout </button>
-         
+
                   {this.state.isLoggedIn ?
                     <p>Welcome {this.state.email} </p>
                       :

@@ -56,7 +56,7 @@ class Login extends React.Component {
                     </div>
                 </div>
 
-                <button type='submit'>Sign Up</button>
+                <button type='submit'>Login</button>
                 </form>
                 <a role='button' onClick={this.testClick}>
                 Dont have an account? signup
