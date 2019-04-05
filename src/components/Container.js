@@ -28,7 +28,7 @@ class Container extends React.Component {
 
     handleLogin = (email, password) => {
       auth.signInWithEmailAndPassword(email, password)
-          .then(u => {
+          .then(() => {
             const user = firebase.auth().currentUser;
 
             console.log(user)
@@ -42,9 +42,28 @@ class Container extends React.Component {
           .catch(err => console.error(err));
     }
 
+      handleLogout = event => {
+          auth.signOut()
+              .then(() => {
+                this.setState({
+                  email: '',
+                  uid: null,
+                  isLoggedIn: false
+                });
+              });
+      }
+
     render() {
         return (
             <div>
+
+              {this.state.SignedUp ?
+                <Login onLogin={this.handleLogin} /> :
+                <SignUp onSignup={this.handleSignUp} />
+               }
+
+
+
                 <SignUp onSignup={this.handleSignUp} />
                   <pre>
                     {JSON.stringify(this.state.SignedUp)}
@@ -60,6 +79,13 @@ class Container extends React.Component {
                    <h4> {JSON.stringify(this.state.uid)} </h4>
                   </pre>
 
+                <button onClick={this.handleLogout}> Logout </button>
+         
+                  {this.state.isLoggedIn ?
+                    <p>Welcome {this.state.email} </p>
+                      :
+                    <p> Please login to continue</p>
+                  }
             </div>
         )
     }
