@@ -12,6 +12,7 @@ class Container extends React.Component {
         loginEmail: '',
         loginPassword: '',
         isLoggedIn: false,
+        goLogin: false,
         uid: ''
       }
 
@@ -40,7 +41,7 @@ class Container extends React.Component {
     handleLogin = (email, password) => {
       auth.signInWithEmailAndPassword(email, password)
           .then(() => {
-            
+
             const user = firebase.auth().currentUser;
               this.setState({
                 email,
@@ -66,36 +67,21 @@ class Container extends React.Component {
     render() {
         return (
             <div>
-
-              {this.state.SignedUp ?
-                <Login onLogin={this.handleLogin} /> :
-                <SignUp onSignup={this.handleSignUp} />
-               }
-
-
-
-                <SignUp onSignup={this.handleSignUp} />
-                  <pre>
-                    {JSON.stringify(this.state.SignedUp)}
-                    <h4>
-                      {JSON.stringify(this.state.email)}
-                      {JSON.stringify(this.state.password)}
-                    </h4>
-                  </pre>
-
-                <Login onLogin={this.handleLogin} />
-                 <pre>
-                   {JSON.stringify(this.state.isLoggedIn)}
-                   <h4> {JSON.stringify(this.state.uid)} </h4>
-                  </pre>
-
-                <button onClick={this.handleLogout}> Logout </button>
-
                   {this.state.isLoggedIn ?
-                    <p>Welcome {this.state.email} </p>
+                    <p>Hello, {this.state.email} </p>
                       :
-                    <p> Please login to continue</p>
+                      <div>
+                      {this.state.SignedUp ?
+                        <Login onLogin={this.handleLogin}
+                          goSignUp = {
+                            () => this.setState({SignedUp: false}) } /> :
+                        <SignUp onSignup={this.handleSignUp}
+                          goLogin = {
+                            () => this.setState({SignedUp: true}) } />
+                      }
+                       </div>
                   }
+                    <button onClick={this.handleLogout}> Logout </button>
             </div>
         )
     }

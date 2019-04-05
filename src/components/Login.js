@@ -24,11 +24,6 @@ class Login extends React.Component {
         });
     }
 
-    testClick = event => {
-        console.log('goSignup');
-    }
-
-
     render() {
         return(
         <div >
@@ -58,7 +53,7 @@ class Login extends React.Component {
 
                 <button type='submit'>Login</button>
                 </form>
-                <a role='button' onClick={this.testClick}>
+                <a role='button' onClick={this.props.goSignUp}>
                 Dont have an account? signup
                 </a>
             </div>
