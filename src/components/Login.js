@@ -6,16 +6,10 @@ class Login extends React.Component {
         password: ''
     }
 
-    updateEmail = event => {
-        this.setState({
-            email: event.target.value
-        });
-    }
-
-    updatePassword = event => {
-        this.setState({
-            password: event.target.value
-        });
+    updateChange = event => {
+      this.setState({
+        [event.target.id]: event.target.value
+      })
     }
 
     onSubmit = event => {
@@ -34,6 +28,7 @@ class Login extends React.Component {
         console.log('goSignup');
     }
 
+
     render() {
         return(
         <div >
@@ -43,8 +38,9 @@ class Login extends React.Component {
                     <div >
                     <input type='text'
                         placeholder='Email'
+                        id='email'
                         value={this.state.email}
-                        onChange={this.updateEmail}
+                        onChange={this.updateChange}
                     />
                     </div>
                 </div>
@@ -52,9 +48,10 @@ class Login extends React.Component {
                 <div >
                     <div >
                     <input type='password'
+                      id='password'
                         placeholder='Password'
                         value={this.state.password}
-                        onChange={this.updatePassword}
+                        onChange={this.updateChange}
                     />
                     </div>
                 </div>
