@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react';
-import SignUp from './auth/SignUp';
-import Login from './auth/Login';
-import Hello from './Hello';
-import { auth } from './firebase';
+import SignUp from '../auth/SignUp/SignUp';
+import Login from '../auth/Login/Login';
+import Hello from '../Hello/Hello';
+import { auth } from '../firebase/firebase';
 import firebase from 'firebase';
 import { Section, Wrapper, Overlay, Title, Button } from './Container.styles'
 

@@ -1,7 +1,5 @@
 import React from 'react';
-import { Title, Button, Input } from './Form.styles';
-
-import logo from './done.svg';
+import { Title, Button, Input } from './Login.styles';
 
 class Login extends React.Component {
     state = {
@@ -39,6 +37,7 @@ class Login extends React.Component {
                         id='email'
                         value={this.state.email}
                         onChange={this.updateChange}
+
                     />
                     </div>
                 </div>
