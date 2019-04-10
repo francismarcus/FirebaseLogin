@@ -1,4 +1,5 @@
 import React from 'react';
+import { Title, Button, Input, P } from './Form.styles';
 
 class SignUp extends React.Component {
     state = {
@@ -24,11 +25,11 @@ class SignUp extends React.Component {
     render() {
         return(
         <div >
-                <h1 >Sign Up!</h1>
+                <Title>Sign Up!</Title>
                 <form onSubmit={this.onSubmit}>
                 <div >
                     <div >
-                    <input type='text'
+                    <Input type='text'
                         placeholder='Email'
                         value={this.state.email}
                         id='email'
@@ -39,7 +40,7 @@ class SignUp extends React.Component {
 
                 <div >
                     <div >
-                    <input type='password'
+                    <Input type='password'
                         placeholder='Password'
                         value={this.state.password}
                         id='password'
@@ -48,10 +49,12 @@ class SignUp extends React.Component {
                     </div>
                 </div>
 
-                <button type='submit'>Sign Up</button>
+                <Button type='submit'><i class="material-icons">
+arrow_forward_ios
+</i></Button>
                 </form>
                 <a role='button' onClick={this.props.goLogin}>
-                Already have an account? login
+                <P> Already have an account? login </P>
                 </a>
             </div>
 

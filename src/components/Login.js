@@ -1,4 +1,7 @@
 import React from 'react';
+import { Title, Button, Input } from './Form.styles';
+
+import logo from './done.svg';
 
 class Login extends React.Component {
     state = {
@@ -27,11 +30,11 @@ class Login extends React.Component {
     render() {
         return(
         <div >
-                <h1>Login</h1>
+                <Title>Login</Title>
                 <form onSubmit={this.onSubmit}>
                 <div >
                     <div >
-                    <input type='text'
+                    <Input type='text'
                         placeholder='Email'
                         id='email'
                         value={this.state.email}
@@ -42,7 +45,7 @@ class Login extends React.Component {
 
                 <div >
                     <div >
-                    <input type='password'
+                    <Input type='password'
                       id='password'
                         placeholder='Password'
                         value={this.state.password}
@@ -51,14 +54,14 @@ class Login extends React.Component {
                     </div>
                 </div>
 
-                <button type='submit'>Login</button>
+                <Button type='submit'><i class="material-icons">
+arrow_forward_ios
+</i></Button>
                 </form>
                 <a role='button' onClick={this.props.goSignUp}>
-                Dont have an account? signup
+                <p> Dont have an account? signup </p>
                 </a>
             </div>
-
-
         )
     }
 

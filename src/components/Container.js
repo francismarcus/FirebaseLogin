@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import SignUp from './SignUp';
 import Login from './Login';
+import Hello from './Hello';
 import { auth } from './firebase';
 import firebase from 'firebase';
+import { Section, Wrapper, Overlay, Title, Button } from './Container.styles'
 
 class Container extends React.Component {
     state = {
@@ -66,9 +68,13 @@ class Container extends React.Component {
 
     render() {
         return (
-            <div>
+          <Fragment>
+            <Section>
+              <Wrapper>
+                <Overlay>
                   {this.state.isLoggedIn ?
-                    <p>Hello, {this.state.email} </p>
+                    <Hello onLogout={this.handleLogout}
+                      name={this.state.email} />
                       :
                       <div>
                       {this.state.SignedUp ?
@@ -81,8 +87,10 @@ class Container extends React.Component {
                       }
                        </div>
                   }
-                    <button onClick={this.handleLogout}> Logout </button>
-            </div>
+                  </Overlay>
+                </Wrapper>
+            </Section>
+            </Fragment>
         )
     }
 }
