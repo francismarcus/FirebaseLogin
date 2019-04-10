@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
-import SignUp from './SignUp';
-import Login from './Login';
+import SignUp from './auth/SignUp';
+import Login from './auth/Login';
 import Hello from './Hello';
 import { auth } from './firebase';
 import firebase from 'firebase';
